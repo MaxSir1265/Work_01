@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_collapseParallaxMultiplier="1.0">
+
+    <android.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mak.shop03.SettingsActivity">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="248dp"
+            android:layout_height="38dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:entries="@array/langlist" />
+
+        <TextView
+            android:id="@+id/Lang"
+            android:layout_width="106dp"
+            android:layout_height="37dp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:gravity="fill"
+            android:text="Мова: "
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+    </android.widget.GridLayout>
+
+</android.support.design.widget.CoordinatorLayout>
