@@ -1,9 +1,12 @@
 package com.mak.shop03;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,33 +26,38 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+//import com.squareup.picasso.Picasso;
+
 import com.squareup.picasso.Picasso;
 
-import java.net.URL;
+import java.io.File;
+import java.net.URI;
 
 import static com.mak.shop03.R.id.imageView;
+import static com.mak.shop03.R.id.imageView1;
+
+//import static com.mak.shop03.R.id.imageView;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static long back_pressed;
 
-    private ImageSwitcher mImageSwitcher;
-    int position = 0;
-    private int[] mImageIds = { R.drawable., R.drawable.,
-            R.drawable., R.drawable., R.drawable.,
-            R.drawable., R.drawable., };
 
-    private GestureDetector mGestureDetector;
-    private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_MAX_OFF_PATH = 250;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 100;
-
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
+//        ImageView iv = (ImageView) findViewById(R.id.imageView1);
+//        iv.setImageResource(R.drawable.welcome);
+//        setContentView(R.layout.activity_main);
+//        setContentView(iv);
+
+//        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+//        imageView.setImageResource(R.drawable.welcome);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,97 +68,12 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+//        ImageView iv1 = (ImageView) findViewById(imageView1);
+//        Picasso.with(getApplicationContext()).load("http://i.imgur.com/DvpvklR.png").into(iv1);
 
-        mImageSwitcher = (ImageSwitcher)findViewById(R.id.imageSwitcher);
-        mImageSwitcher.setFactory((ViewSwitcher.ViewFactory) this);
-
-        Animation inAnimation = new AlphaAnimation(0, 1);
-        inAnimation.setDuration(2000);
-        Animation outAnimation = new AlphaAnimation(1, 0);
-        outAnimation.setDuration(2000);
-
-        mImageSwitcher.setInAnimation(inAnimation);
-        mImageSwitcher.setOutAnimation(outAnimation);
-
-        mImageSwitcher.setImageResource(mImageIds[0]);
-
-        mGestureDetector = new GestureDetector(this, (GestureDetector.OnGestureListener) this);
-
-        ImageView iv = (ImageView) findViewById(R.id.imageView1);
-        Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(iv);
 
     }
 
-    public void setPositionNext() {
-        position++;
-        if (position > mImageIds.length - 1) {
-            position = 0;
-        }
-    }
-
-    public void setPositionPrev() {
-        position--;
-        if (position < 0) {
-            position = mImageIds.length - 1;
-        }
-    }
-
-    public View makeView() {
-        ImageView imageView = new ImageView(this);
-        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        imageView.setLayoutParams(new
-                ImageSwitcher.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-        imageView.setBackgroundColor(0xFF000000);
-        return imageView;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return mGestureDetector.onTouchEvent(event);
-    }
-
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        try {
-            if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
-                return false;
-            // справа налево
-            if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
-                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                setPositionNext();
-                mImageSwitcher.setImageResource(mImageIds[position]);
-            } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
-                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                // слева направо
-                setPositionPrev();
-                mImageSwitcher.setImageResource(mImageIds[position]);
-            }
-        } catch (Exception e) {
-            // nothing
-            return true;
-        }
-        return true;
-    }
 
     @Override
     public void onBackPressed() {

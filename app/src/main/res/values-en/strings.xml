@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">My Shop</string>
-    <string name="nav_order">Мої замовлення</string>
-    <string name="button_order">Замовити</string>
+    <string name="nav_order">My orders</string>
+    <string name="button_order">Order</string>
     <string-array name="langlist">
         <item>Українська</item>
         <item>Русский</item>
         <item>English</item>
     </string-array>
-    <string name="Lang">Мова:</string>
-    <string name="version">Версія:</string>
-    <string name="letter">Зворотній зв\'язок:</string>
+    <string name="Lang">Language:</string>
+    <string name="version">Version:</string>
+    <string name="letter">Feedback:</string>
     <string name="my_link"><![CDATA[<a href="mailto:epresed95@gmail.com">Gmail</a>]]></string>
-    <string name="myordertitle">Мої замовлення</string>
-    <string name="settingstitle">Налаштування</string>
-    <string name="onemoretitle">Додатково</string>
-    <string name="sharetitle">Поділитися</string>
-    <string name="infotitle">Про программу</string>
-    <string name="basketact">Кошик</string>
-    <string name="aboutact">Про програму</string>
-    <string name="myorderact">Мої замовлення</string>
-    <string name="settingsact">Налаштування</string>
-    <string name="firs_tname">Прізвище</string>
-    <string name="second_name">Ім\'я</string>
-    <string name="tr_name">Побатькові</string>
-    <string name="number_phone">Номер телефону</string>
-    <string name="adress">Адреса доставки</string>
+    <string name="myordertitle">My orders</string>
+    <string name="settingstitle">Settings</string>
+    <string name="onemoretitle">Additionally</string>
+    <string name="sharetitle">Share</string>
+    <string name="infotitle">About</string>
+    <string name="basketact">Basket</string>
+    <string name="aboutact">About</string>
+    <string name="myorderact">My orders</string>
+    <string name="settingsact">Settings</string>
+    <string name="firs_tname">First name</string>
+    <string name="second_name">Second name</string>
+    <string name="tr_name">Patronymic</string>
+    <string name="number_phone">Phone number</string>
+    <string name="adress">Adress</string>
     <string name="info"></string>
-    <string name="double_press">Нажмите еще раз для выхода!</string>
-    <string name="text_order">Заповніть всі поля!</string>
+    <string name="double_press">Press twice to exit!</string>
+    <string name="text_order">Fiil in all the fields!</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
 
