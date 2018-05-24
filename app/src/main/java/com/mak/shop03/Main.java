@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -51,14 +52,6 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-//        ImageView iv = (ImageView) findViewById(R.id.imageView1);
-//        iv.setImageResource(R.drawable.welcome);
-//        setContentView(R.layout.activity_main);
-//        setContentView(iv);
-
-//        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-//        imageView.setImageResource(R.drawable.welcome);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -68,9 +61,10 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        ImageView iv1 = (ImageView) findViewById(imageView1);
-//        Picasso.with(getApplicationContext()).load("http://i.imgur.com/DvpvklR.png").into(iv1);
 
+
+        BackgroundTask backgroundTask = new BackgroundTask();
+        backgroundTask.execute();
 
     }
 
@@ -154,6 +148,10 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         Intent intent = new Intent(Main.this, BasketActivity.class);
         startActivity(intent);
     }
-    
+
+
+
+
+
 
 }

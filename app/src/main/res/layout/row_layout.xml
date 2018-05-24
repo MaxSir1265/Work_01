@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp">
+
+    <TextView
+    android:layout_width="100dp"
+    android:layout_height="match_parent"
+    android:text="IHOR"
+    android:gravity="center"
+    android:textSize="20dp"
+    android:id="@+id/name"
+    android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:text="IHOR"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/surname"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:text="IHOR"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:id="@+id/address"
+        android:textStyle="bold"/>
+
+
+
+</LinearLayout>
