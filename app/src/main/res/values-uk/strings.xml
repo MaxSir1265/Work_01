@@ -8,6 +8,11 @@
         <item>Русский</item>
         <item>English</item>
     </string-array>
+    <string-array name="categoryList">
+        <item>Смартфони</item>
+        <item>Смарт годинники</item>
+        <item>Аксесуари</item>
+    </string-array>
     <string name="Lang">Мова:</string>
     <string name="version">Версія:</string>
     <string name="letter">Зворотній зв\'язок:</string>

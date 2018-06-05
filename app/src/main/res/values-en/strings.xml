@@ -8,6 +8,11 @@
         <item>Русский</item>
         <item>English</item>
     </string-array>
+    <string-array name="categoryList">
+        <item>Smartphones</item>
+        <item>Smartwatches</item>
+        <item>Accessories</item>
+    </string-array>
     <string name="Lang">Language:</string>
     <string name="version">Version:</string>
     <string name="letter">Feedback:</string>

@@ -1,5 +1,6 @@
 package com.mak.shop03;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,8 +12,12 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.Menu;
@@ -29,10 +34,22 @@ import android.widget.ViewSwitcher;
 
 //import com.squareup.picasso.Picasso;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Request;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.mak.shop03.R.id.imageView;
 import static com.mak.shop03.R.id.imageView1;
@@ -42,6 +59,14 @@ import static com.mak.shop03.R.id.imageView1;
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static long back_pressed;
+
+    private static final String URL_DATA = "http://37.57.220.138/omk/onlinestore/JSON/get_products.php";
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+
+    public SwipeRefreshLayout swipeRefreshLayout;
+
+    private List<Items> itemsList;
 
 
     @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
@@ -61,12 +86,71 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        itemsList = new ArrayList<>();
 
-        BackgroundTask backgroundTask = new BackgroundTask();
-        backgroundTask.execute();
+        loadRecyclerViewData();
+
+//        swipeRefreshLayout.setOnRefreshListener(
+//                new SwipeRefreshLayout.OnRefreshListener(){
+//                    @Override
+//                    public void onRefresh() {
+//                        Log.i(TAG, "onRefresh: some text");
+//
+//                    }
+//                });
+
+        }
+
+    private void loadRecyclerViewData(){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Завантаження даних...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET,
+                URL_DATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONArray array = new JSONArray(response);
+//                            JSONArray array = jsonObject.getJSONArray("user");
+                            for (int i = 0; i<array.length(); i++){
+                                JSONObject object = array.getJSONObject(i);
+                                Items items = new Items(
+                                        object.getString("name"),
+                                        object.getString("surname"),
+                                        object.getString("imageurl"),
+                                        object.getString("description")
+                                );
+                                itemsList.add(items);
+                            }
+
+                            adapter = new RecyclerAdapter(itemsList, getApplicationContext());
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
     }
+
 
 
     @Override
@@ -148,9 +232,6 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         Intent intent = new Intent(Main.this, BasketActivity.class);
         startActivity(intent);
     }
-
-
-
 
 
 

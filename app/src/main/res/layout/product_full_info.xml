@@ -5,36 +5,56 @@
     android:weightSum="100">
 
 
-        <ImageView
-            android:id="@+id/imageViewFull"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="70"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher_image_error"/>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textFullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textFullPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/imageViewFull"
+                            android:layout_width="match_parent"
+                            android:layout_height="276dp"
+                            android:src="@mipmap/images" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:text="ORDER(TEST)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/textFullName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_weight="30"
+                            android:text="Name"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:id="@+id/textDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/textFullPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_weight="23.19"
+                            android:text="Price"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/appCompatButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:text="ORDER(TEST)" />
 
-
+                        <TextView
+                            android:id="@+id/textDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_weight="70"
+                            android:text="Description"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                </LinearLayout>
+        </ScrollView>
 
 
 </LinearLayout>

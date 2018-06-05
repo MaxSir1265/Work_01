@@ -8,35 +8,48 @@
     android:visibility="visible"
    >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:scrollIndicators="none"
             android:visibility="visible">
+
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
-                android:contentDescription=""
                 android:src="@drawable/welcome"
                 android:visibility="visible" />
 
+
+            <Spinner
+                android:id="@+id/spinnerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/categoryList"
+                android:spinnerMode="dialog" />
+
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_columnWeight="1"
-                android:id="@+id/recyclerView"
-                android:layout_gravity="bottom">
+                android:layout_gravity="bottom"
+                android:fadeScrollbars="false"
+                android:nestedScrollingEnabled="true"
+                app:fastScrollEnabled="false">
 
             </android.support.v7.widget.RecyclerView>
 
+
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

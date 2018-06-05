@@ -5,38 +5,31 @@ package com.mak.shop03;
  */
 
 public class Items {
+    private String price;
     private String name;
-    private String surname;
-    private String address;
+    private String imageURL;
+    private String description;
 
+    public Items(String price, String name, String imageURL, String description) {
+        this.price = price;
+        this.name = name;
+        this.imageURL = imageURL;
+        this.description = description;
+    }
 
-    public Items(String name, String  surname, String address){
-        this.setName(name);
-        this.setSurname(surname);
-        this.setAddress(address);
+    public String getPrice() {
+        return price;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public String getDescription() {
+        return description;
     }
 }

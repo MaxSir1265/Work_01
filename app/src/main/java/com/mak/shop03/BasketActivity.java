@@ -13,10 +13,10 @@ public class BasketActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basket);
+
     }
 
     public void onClickGoBack(View view){
-//        Intent intent = new Intent(BasketActivity.this, Main.class);`
         finish();
     }
 

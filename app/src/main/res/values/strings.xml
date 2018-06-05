@@ -5,6 +5,13 @@
         <item>Русский</item>
         <item>English</item>
     </string-array>
+
+    <string-array name="categoryList">
+        <item>Smartphones</item>
+        <item>Smartwatches</item>
+        <item>Accessories</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

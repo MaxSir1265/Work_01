@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProductFullInfo"></activity>
         <activity
             android:name=".BasketActivity"
             android:label="@string/basketact"
